@@ -25,9 +25,10 @@ beforeAll(async () => {
 
   process.env.DATABASE_URL = databaseURL
 
-  execSync('npm prisma migrate deploy')
+  execSync('npx prisma migrate deploy')
 })
 
 afterAll(async () => {
-  console.log('depois')
+  await prisma.$executeRawUnsafe(`DROP SCHEMA IF EXISTS "${schemaId}" CASCADE`)
+  await prisma.$disconnect()
 })
