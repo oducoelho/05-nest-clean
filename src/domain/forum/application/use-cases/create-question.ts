@@ -9,7 +9,7 @@ import { Injectable } from '@nestjs/common'
 interface CreateQuestionUseCaseRequest {
   authorId: string
   title: string
-  content: stringa
+  content: string
   attachmentsIds: string[]
 }
 

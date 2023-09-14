@@ -1,6 +1,6 @@
-import { RegisterStudentUseCase } from './register-students'
 import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students-repository'
 import { FakeHasher } from 'test/cryptography/fake-hasher'
+import { RegisterStudentUseCase } from './register-students'
 
 let inMemoryStudentsRepository: InMemoryStudentsRepository
 let fakeHasher: FakeHasher
@@ -18,7 +18,7 @@ describe('Register Student', () => {
   it('should be able to register a new student', async () => {
     const result = await sut.execute({
       name: 'John Doe',
-      email: 'john.doe@gmail.com',
+      email: 'johndoe@example.com',
       password: '123456',
     })
 
@@ -27,10 +27,11 @@ describe('Register Student', () => {
       student: inMemoryStudentsRepository.items[0],
     })
   })
+
   it('should hash student password upon registration', async () => {
     const result = await sut.execute({
       name: 'John Doe',
-      email: 'john.doe@gmail.com',
+      email: 'johndoe@example.com',
       password: '123456',
     })
 
